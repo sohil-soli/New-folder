@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>برای تو 🤍</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Tahoma, Arial, sans-serif;
+            color: #fff;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(120, 0, 30, 0.35), transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(70, 0, 90, 0.25), transparent 35%),
+                linear-gradient(135deg, #080808, #13070c, #050505);
+
+            overflow-x: hidden;
+        }
+
+        /* نورهای پس‌زمینه */
+
+        .glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow.one {
+            background: #9d0038;
+            top: -100px;
+            right: -100px;
+            animation: moveGlow 8s infinite alternate ease-in-out;
+        }
+
+        .glow.two {
+            background: #5b006f;
+            bottom: -100px;
+            left: -100px;
+            animation: moveGlow 10s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes moveGlow {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(60px, 40px);
+            }
+        }
+
+        /* ذرات */
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+        }
+
+        .particle:nth-child(1) {
+            left: 10%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(2) {
+            left: 25%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(3) {
+            left: 40%;
+            animation-duration: 10s;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(4) {
+            left: 55%;
+            animation-duration: 13s;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(5) {
+            left: 70%;
+            animation-duration: 11s;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(6) {
+            left: 85%;
+            animation-duration: 14s;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(7) {
+            left: 95%;
+            animation-duration: 10s;
+            animation-delay: 5s;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 0.8;
+            }
+
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+        /* صفحه */
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            padding: 70px 20px;
+        }
+
+        /* عنوان */
+
+        .intro {
+            text-align: center;
+            margin-bottom: 45px;
+            animation: fadeDown 1.3s ease forwards;
+        }
+
+        .intro small {
+            display: block;
+            color: #aaa;
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .intro h1 {
+            font-size: 42px;
+            font-weight: 500;letter-spacing: 2px;
+        }
+
+        .intro .heart {
+            display: inline-block;
+            color: #e60046;
+            animation: heartbeat 1.7s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        /* نامه */
+
+        .letter {
+            position: relative;
+            background: rgba(15, 15, 15, 0.72);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 45px;
+            backdrop-filter: blur(15px);
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.5),
+                inset 0 0 40px rgba(255,0,70,0.025);
+
+            animation: fadeUp 1.4s ease forwards;
+        }
+
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 12%;
+            width: 76%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 0, 70, 0.5),
+                transparent
+            );
+        }
+
+        .letter p {
+            color: #e6e6e6;
+            font-size: 17px;
+            line-height: 2.25;
+            margin-bottom: 24px;
+            text-align: right;
+        }
+
+        .letter .hello {
+            color: #fff;
+            font-size: 21px;
+            margin-bottom: 30px;
+        }
+
+        .quote {
+            margin: 35px 0;
+            padding: 25px;
+            border-right: 2px solid #a6003c;
+            background: rgba(255,255,255,0.025);
+            border-radius: 12px;
+        }
+
+        .quote p {
+            margin: 0;
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        /* پایان نامه */
+
+        .ending {
+            text-align: center;
+            margin-top: 45px;
+        }
+
+        .ending h2 {
+            font-size: 25px;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .ending .signature {
+            color: #aaa;
+            letter-spacing: 5px;
+            font-size: 13px;
+        }
+
+        /* دکمه پیام */
+
+        .secret-button {
+            display: block;
+            margin: 45px auto 0;
+            padding: 14px 28px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            background: rgba(255,255,255,0.04);
+            color: #eee;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .secret-button:hover {
+            background: rgba(255,0,70,0.12);
+            border-color: rgba(255,0,70,0.35);
+            transform: translateY(-2px);
+        }
+
+        /* پیام مخفی */
+
+        .secret-message {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition:
+                max-height 1s ease,
+                opacity 0.7s ease,
+                margin 0.7s ease;
+        }
+
+        .secret-message.show {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 30px;
+        }
+
+        .secret-message-inner {
+            padding: 25px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: #ddd;
+            line-height: 2.2;
+            font-size: 15px;
+        }
+
+        /* موزیک */
+
+        .music-button {
+            position: fixed;
+            left: 22px;
+            bottom: 22px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(15,15,15,0.8);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            font-size: 21px;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        }
+
+        .music-button:hover {
+            transform: scale(1.08);
+            border-color: rgba(255,0,70,0.4);
+        }
+
+        /* انیمیشن ورود */
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* موبایل */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 45px 14px;
+            }
+
+            .intro {
+                margin-bottom: 30px;
+            }
+
+            .intro small {
+                font-size: 11px;
+            }
+
+            .intro h1 {
+                font-size: 30px;
+            }
+
+            .letter {
+                padding: 28px 20px;
+                border-radius: 20px;
+            }
+
+            .letter p {
+                font-size: 15px;
+                line-height: 2.5;
+                margin-bottom: 21px;
+            }
+
+            .letter .hello {
+                font-size: 19px;
+            }
+
+            .quote {
+                padding: 20px;
+                margin: 28px 0;
+            }
+
+            .quote p {
+                font-size: 14px;
+                line-height: 2.2;
+            }
+
+            .ending h2 {
+                font-size: 21px;
+            }
+
+            .secret-message-inner {
+                font-size: 14px;
+                line-height: 2.3;
+            }
+
+            .music-button {
+                width: 48px;
+                height: 48px;
+                left: 15px;
+                bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- نورهای پس‌زمینه -->
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <!-- ذرات -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <main class="container">
+
+        <!-- عنوان -->
+        <section class="intro">
+            <small>JUST FOR YOU</small>
+
+            <h1>
+                برای تو
+                <span class="heart">♥</span>
+            </h1>
+        </section>
+
+
+        <!-- نامه -->
+        <section class="letter">
+
+            <p class="hello">
+                عزیزترینم،
+            </p>
+
+            <p>
+                شاید چیزی که اتفاق افتاد برای من فقط یه اشتباه ساده به نظر بیاد،
+                ولی می‌دونم برای تو فقط یه جمله یا یه اسم نبود.
+                می‌دونم ممکنه باعث شده باشه یه لحظه چیزایی که بینمون ساختیم
+                برات زیر سؤال بره.
+            </p>
+
+            <p>
+                نمی‌خوام برای اشتباهم بهونه بیارم یا سعی کنم کوچیکش کنم.
+                اشتباه کردم و قبولش دارم.
+                چیزی که بیشتر از خود اشتباه اذیتم می‌کنه اینه که باعث شدم
+                تو ناراحت بشی.
+            </p>
+
+            <p>
+                تو برای من آدم معمولی‌ای نیستی که بشه با یه «ببخشید»
+                همه چیز رو تموم کرد.
+                برای همین نمی‌خوام فقط عذرخواهی کنم و منتظر باشم همه چیز
+                خودبه‌خود درست بشه.
+            </p>
+
+            <div class="quote">
+                <p>
+                    می‌خوام دوباره همون حس خوب و اعتمادی که بینمون بود رو بسازم؛
+                    نه فقط با حرف، بلکه با رفتاری که بتونی خودت ببینیش.
+                </p>
+            </div>
+
+            <p>
+                و یه چیز رو از ته دلم می‌گم:
+                من قدر تو و چیزی که بینمون هست رو می‌دونم.
+                شاید همیشه نتونم درست نشونش بدم،
+                ولی ارزشش برای من خیلی بیشتر از چیزیه که با چندتا جمله بشه گفت.
+            </p>
+
+            <p>
+                نمی‌خوام این یه صفحه فقط یه نامه‌ی قشنگ باشه.
+                می‌خوام یادم بمونه که بعضی چیزها رو نباید ساده گرفت،
+                مخصوصاً وقتی پای کسی وسطه که برات واقعاً مهمه.
+            </p>
+
+
+            <!-- پایان -->
+            <div class="ending">
+
+                <h2>
+                    بیا دوباره خوبش کنیم؟ 🤍
+                </h2>
+
+                <div class="signature">
+                    S O L I
+                </div>
+
+            </div>
+
+
+            <!-- دکمه پیام مخفی -->
+            <button class="secret-button" onclick="showSecret()">
+                یه چیز دیگه هم هست...
+            </button>
+
+
+            <!-- پیام مخفی -->
+            <div class="secret-message" id="secretMessage">
+
+                <div class="secret-message-inner">
+
+                    شاید نتونم همه چیز رو با چندتا جمله درست کنم،
+                    ولی می‌خوام بدونی چیزی که بین ماست برای من ارزشمنده.
+
+                    <br><br>
+
+                    بعضی آدم‌ها رو نمیشه با یه اشتباه از زندگی کنار گذاشت.
+                    تو یکی از همون آدم‌هایی.
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- موزیک -->
+    <button class="music-button" id="musicButton" onclick="toggleMusic()">
+        ♫
+    </button>
+
+    <!--
+        موزیک اینجا قرار می‌گیره
+    -->
+    <audio id="music" loop>
+        <source src="music/love.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script>
+
+        /* پیام مخفی */
+
+        function showSecret() {
+
+            const message = document.getElementById("secretMessage");
+
+            message.classList.toggle("show");
+
+        }
+
+
+        /* موزیک */
+
+        const music = document.getElementById("music");
+        const musicButton = document.getElementById("musicButton");
+
+        function toggleMusic() {
+
+            if (music.paused) {
+
+                music.play();
+
+                musicButton.innerHTML = "❚❚";
+
+            } else {
+
+                music.pause();
+
+                musicButton.innerHTML = "♫";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
